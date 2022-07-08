@@ -21,9 +21,9 @@ $SPEC_FILE = (python -c 'import chia; print(chia.PYINSTALLER_SPEC_PATH)') -join 
 pyinstaller --log-level INFO $SPEC_FILE
 
 Write-Output "   ---"
-Write-Output "Copy chia executables to chia-blockchain-gui\"
+Write-Output "Copy chia executables to maize-blockchain-gui\"
 Write-Output "   ---"
-Copy-Item "dist\daemon" -Destination "..\chia-blockchain-gui\packages\gui\" -Recurse
+Copy-Item "dist\daemon" -Destination "..\maize-blockchain-gui\packages\gui\" -Recurse
 
 Write-Output "   ---"
 Write-Output "Setup npm packager"
@@ -32,7 +32,7 @@ Set-Location -Path ".\npm_windows" -PassThru
 npm ci
 $Env:Path = $(npm bin) + ";" + $Env:Path
 
-Set-Location -Path "..\..\chia-blockchain-gui" -PassThru
+Set-Location -Path "..\..\maize-blockchain-gui" -PassThru
 # We need the code sign cert in the gui subdirectory so we can actually sign the UI package
 If ($env:HAS_SECRET) {
     Copy-Item "..\win_code_sign_cert.p12" -Destination "packages\gui\"
@@ -96,8 +96,8 @@ If ($env:HAS_SECRET) {
 Write-Output "   ---"
 Write-Output "Moving final installers to expected location"
 Write-Output "   ---"
-Copy-Item ".\Chia-win32-x64" -Destination "$env:GITHUB_WORKSPACE\chia-blockchain-gui\" -Recurse
-Copy-Item ".\release-builds" -Destination "$env:GITHUB_WORKSPACE\chia-blockchain-gui\" -Recurse
+Copy-Item ".\Chia-win32-x64" -Destination "$env:GITHUB_WORKSPACE\maize-blockchain-gui\" -Recurse
+Copy-Item ".\release-builds" -Destination "$env:GITHUB_WORKSPACE\maize-blockchain-gui\" -Recurse
 
 Write-Output "   ---"
 Write-Output "Windows Installer complete"

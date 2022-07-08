@@ -71,10 +71,10 @@ fpm -s dir -t rpm \
   .
 # CLI only rpm done
 
-cp -r dist/daemon ../chia-blockchain-gui/packages/gui
+cp -r dist/daemon ../maize-blockchain-gui/packages/gui
 
 # Change to the gui package
-cd ../chia-blockchain-gui/packages/gui || exit
+cd ../maize-blockchain-gui/packages/gui || exit
 
 # sets the version for chia-blockchain in package.json
 cp package.json package.json.orig
