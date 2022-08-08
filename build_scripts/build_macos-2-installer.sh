@@ -44,7 +44,7 @@ jq --arg VER "$CHIA_INSTALLER_VERSION" '.version=$VER' package.json > temp.json 
 
 echo "electron-packager"
 electron-packager . Chia --asar.unpack="**/daemon/**" --platform=darwin \
---icon=src/assets/img/Chia.icns --overwrite --app-bundle-id=net.chia.blockchain \
+--icon=src/assets/img/maize.icns --overwrite --app-bundle-id=net.chia.blockchain \
 --appVersion=$CHIA_INSTALLER_VERSION \
 --no-prune --no-deref-symlinks \
 --ignore="/node_modules/(?!ws(/|$))(?!@electron(/|$))" --ignore="^/src$" --ignore="^/public$"

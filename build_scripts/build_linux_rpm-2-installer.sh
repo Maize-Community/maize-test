@@ -82,7 +82,7 @@ jq --arg VER "$CHIA_INSTALLER_VERSION" '.version=$VER' package.json > temp.json 
 
 echo electron-packager
 electron-packager . chia-blockchain --asar.unpack="**/daemon/**" --platform=linux \
---icon=src/assets/img/Chia.icns --overwrite --app-bundle-id=net.chia.blockchain \
+--icon=src/assets/img/maize.icns --overwrite --app-bundle-id=net.chia.blockchain \
 --appVersion=$CHIA_INSTALLER_VERSION --executable-name=chia-blockchain \
 --no-prune --no-deref-symlinks \
 --ignore="/node_modules/(?!ws(/|$))(?!@electron(/|$))" --ignore="^/src$" --ignore="^/public$"

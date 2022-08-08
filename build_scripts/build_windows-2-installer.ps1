@@ -69,7 +69,7 @@ Write-Output "   ---"
 Write-Output "   ---"
 Write-Output "electron-packager"
 electron-packager . Chia --asar.unpack="**\daemon\**" `
---overwrite --icon=.\src\assets\img\chia.ico --app-version=$packageVersion `
+--overwrite --icon=.\src\assets\img\maize.ico --app-version=$packageVersion `
 --no-prune --no-deref-symlinks `
 --ignore="/node_modules/(?!ws(/|$))(?!@electron(/|$))" --ignore="^/src$" --ignore="^/public$"
 # Note: `node_modules/ws` and `node_modules/@electron/remote` are dynamic dependencies
