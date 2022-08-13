@@ -4,17 +4,17 @@ import sys
 from multiprocessing import freeze_support
 from typing import Dict, List, Optional, Tuple
 
-from chia.consensus.constants import ConsensusConstants
-from chia.consensus.default_constants import DEFAULT_CONSTANTS
-from chia.full_node.full_node import FullNode
-from chia.full_node.full_node_api import FullNodeAPI
-from chia.rpc.full_node_rpc_api import FullNodeRpcApi
-from chia.server.outbound_message import NodeType
-from chia.server.start_service import RpcInfo, Service, async_run
-from chia.util.chia_logging import initialize_logging
-from chia.util.config import load_config, load_config_cli
-from chia.util.default_root import DEFAULT_ROOT_PATH
-from chia.util.ints import uint16
+from maize.consensus.constants import ConsensusConstants
+from maize.consensus.default_constants import DEFAULT_CONSTANTS
+from maize.full_node.full_node import FullNode
+from maize.full_node.full_node_api import FullNodeAPI
+from maize.rpc.full_node_rpc_api import FullNodeRpcApi
+from maize.server.outbound_message import NodeType
+from maize.server.start_service import RpcInfo, Service, async_run
+from maize.util.maize_logging import initialize_logging
+from maize.util.config import load_config, load_config_cli
+from maize.util.default_root import DEFAULT_ROOT_PATH
+from maize.util.ints import uint16
 
 # See: https://bugs.python.org/issue29288
 "".encode("idna")

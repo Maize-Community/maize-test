@@ -20,14 +20,14 @@ import {
   TableControlled,
   TooltipIcon,
   useOpenDialog,
-  chiaToMojo,
+  maizeToMojo,
   useCurrencyCode,
   useSerializedNavigationState,
   useShowSaveDialog,
   Tooltip,
   LayoutDashboardSub,
-} from '@chia/core';
-import { OfferSummaryRecord, OfferTradeRecord } from '@chia/api';
+} from '@maize/core';
+import { OfferSummaryRecord, OfferTradeRecord } from '@maize/api';
 import {
   Box,
   Checkbox,
@@ -50,12 +50,12 @@ import {
   Reply as Share,
   Visibility,
 } from '@mui/icons-material';
-import { Offers } from '@chia/icons';
+import { Offers } from '@maize/icons';
 import {
   useCancelOfferMutation,
   useGetOfferDataMutation,
   useGetWalletsQuery,
-} from '@chia/api-react';
+} from '@maize/api-react';
 import {
   colorForOfferState,
   displayStringForOfferState,
@@ -101,7 +101,7 @@ function ConfirmOfferCancellation(props: ConfirmOfferCancellationProps) {
   async function handleConfirm() {
     const { fee: xmzFee } = methods.getValues();
 
-    const fee = cancelWithTransaction ? chiaToMojo(xmzFee) : new BigNumber(0);
+    const fee = cancelWithTransaction ? maizeToMojo(xmzFee) : new BigNumber(0);
 
     onClose([true, { cancelWithTransaction, cancellationFee: fee }]);
   }

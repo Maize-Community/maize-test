@@ -12,7 +12,7 @@ type Display = {
 const display: {
   [key in Unit]: Display;
 } = {
-  chia: {
+  maize: {
     format: '{amount} XMZ',
     fractionDigits: 12,
   },

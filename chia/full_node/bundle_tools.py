@@ -4,13 +4,13 @@ from typing import Optional, Tuple, List, Union
 from clvm import SExp
 from clvm_tools import binutils
 
-from chia.full_node.generator import create_compressed_generator
-from chia.types.blockchain_format.program import SerializedProgram, Program
-from chia.types.coin_spend import CoinSpend
-from chia.types.generator_types import BlockGenerator, CompressorArg
-from chia.types.spend_bundle import SpendBundle
-from chia.util.byte_types import hexstr_to_bytes
-from chia.util.ints import uint32, uint64
+from maize.full_node.generator import create_compressed_generator
+from maize.types.blockchain_format.program import SerializedProgram, Program
+from maize.types.coin_spend import CoinSpend
+from maize.types.generator_types import BlockGenerator, CompressorArg
+from maize.types.spend_bundle import SpendBundle
+from maize.util.byte_types import hexstr_to_bytes
+from maize.util.ints import uint32, uint64
 
 
 def spend_bundle_to_serialized_coin_spend_entry_list(bundle: SpendBundle) -> bytes:

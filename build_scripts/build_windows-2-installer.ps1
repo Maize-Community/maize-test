@@ -7,21 +7,21 @@ mkdir build_scripts\win_build
 git status
 git submodule
 
-if (-not (Test-Path env:CHIA_INSTALLER_VERSION)) {
-  $env:CHIA_INSTALLER_VERSION = '0.0.0'
-  Write-Output "WARNING: No environment variable CHIA_INSTALLER_VERSION set. Using 0.0.0"
+if (-not (Test-Path env:MAIZE_INSTALLER_VERSION)) {
+  $env:MAIZE_INSTALLER_VERSION = '0.0.0'
+  Write-Output "WARNING: No environment variable MAIZE_INSTALLER_VERSION set. Using 0.0.0"
 }
-Write-Output "Chia Version is: $env:CHIA_INSTALLER_VERSION"
+Write-Output "Maize Version is: $env:MAIZE_INSTALLER_VERSION"
 Write-Output "   ---"
 
 Write-Output "   ---"
-Write-Output "Use pyinstaller to create chia .exe's"
+Write-Output "Use pyinstaller to create maize .exe's"
 Write-Output "   ---"
-$SPEC_FILE = (python -c 'import chia; print(chia.PYINSTALLER_SPEC_PATH)') -join "`n"
+$SPEC_FILE = (python -c 'import maize; print(maize.PYINSTALLER_SPEC_PATH)') -join "`n"
 pyinstaller --log-level INFO $SPEC_FILE
 
 Write-Output "   ---"
-Write-Output "Copy chia executables to maize-blockchain-gui\"
+Write-Output "Copy maize executables to maize-blockchain-gui\"
 Write-Output "   ---"
 Copy-Item "dist\daemon" -Destination "..\maize-blockchain-gui\packages\gui\" -Recurse
 
@@ -47,13 +47,13 @@ $Env:NODE_OPTIONS = "--max-old-space-size=3000"
 Set-Location -Path "packages\gui" -PassThru
 
 Write-Output "   ---"
-Write-Output "Increase the stack for chia command for (chia plots create) chiapos limitations"
+Write-Output "Increase the stack for maize command for (maize plots create) chiapos limitations"
 # editbin.exe needs to be in the path
-editbin.exe /STACK:8000000 daemon\chia.exe
+editbin.exe /STACK:8000000 daemon\maize.exe
 Write-Output "   ---"
 
-$packageVersion = "$env:CHIA_INSTALLER_VERSION"
-$packageName = "Chia-$packageVersion"
+$packageVersion = "$env:MAIZE_INSTALLER_VERSION"
+$packageName = "Maize-$packageVersion"
 
 Write-Output "packageName is $packageName"
 
@@ -61,21 +61,21 @@ Write-Output "   ---"
 Write-Output "fix version in package.json"
 choco install jq
 cp package.json package.json.orig
-jq --arg VER "$env:CHIA_INSTALLER_VERSION" '.version=$VER' package.json > temp.json
+jq --arg VER "$env:MAIZE_INSTALLER_VERSION" '.version=$VER' package.json > temp.json
 rm package.json
 mv temp.json package.json
 Write-Output "   ---"
 
 Write-Output "   ---"
 Write-Output "electron-packager"
-electron-packager . Chia --asar.unpack="**\daemon\**" `
+electron-packager . Maize --asar.unpack="**\daemon\**" `
 --overwrite --icon=.\src\assets\img\maize.ico --app-version=$packageVersion `
 --no-prune --no-deref-symlinks `
 --ignore="/node_modules/(?!ws(/|$))(?!@electron(/|$))" --ignore="^/src$" --ignore="^/public$"
 # Note: `node_modules/ws` and `node_modules/@electron/remote` are dynamic dependencies
 # which GUI calls by `window.require('...')` at runtime.
 # So `ws` and `@electron/remote` cannot be ignored at this time.
-Get-ChildItem Chia-win32-x64\resources
+Get-ChildItem Maize-win32-x64\resources
 Write-Output "   ---"
 
 Write-Output "   ---"
@@ -87,8 +87,8 @@ If ($env:HAS_SECRET) {
    Write-Output "   ---"
    Write-Output "Add timestamp and verify signature"
    Write-Output "   ---"
-   signtool.exe timestamp /v /t http://timestamp.comodoca.com/ .\release-builds\windows-installer\ChiaSetup-$packageVersion.exe
-   signtool.exe verify /v /pa .\release-builds\windows-installer\ChiaSetup-$packageVersion.exe
+   signtool.exe timestamp /v /t http://timestamp.comodoca.com/ .\release-builds\windows-installer\MaizeSetup-$packageVersion.exe
+   signtool.exe verify /v /pa .\release-builds\windows-installer\MaizeSetup-$packageVersion.exe
    }   Else    {
    Write-Output "Skipping timestamp and verify signatures - no authorization to install certificates"
 }
@@ -96,7 +96,7 @@ If ($env:HAS_SECRET) {
 Write-Output "   ---"
 Write-Output "Moving final installers to expected location"
 Write-Output "   ---"
-Copy-Item ".\Chia-win32-x64" -Destination "$env:GITHUB_WORKSPACE\maize-blockchain-gui\" -Recurse
+Copy-Item ".\Maize-win32-x64" -Destination "$env:GITHUB_WORKSPACE\maize-blockchain-gui\" -Recurse
 Copy-Item ".\release-builds" -Destination "$env:GITHUB_WORKSPACE\maize-blockchain-gui\" -Recurse
 
 Write-Output "   ---"

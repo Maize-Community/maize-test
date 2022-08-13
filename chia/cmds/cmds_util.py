@@ -2,13 +2,13 @@ from typing import Any, Awaitable, Callable, Dict, Optional, Tuple
 
 import aiohttp
 
-from chia.rpc.wallet_rpc_client import WalletRpcClient
-from chia.types.blockchain_format.sized_bytes import bytes32
-from chia.types.mempool_submission_status import MempoolSubmissionStatus
-from chia.util.config import load_config
-from chia.util.default_root import DEFAULT_ROOT_PATH
-from chia.util.ints import uint16
-from chia.wallet.transaction_record import TransactionRecord
+from maize.rpc.wallet_rpc_client import WalletRpcClient
+from maize.types.blockchain_format.sized_bytes import bytes32
+from maize.types.mempool_submission_status import MempoolSubmissionStatus
+from maize.util.config import load_config
+from maize.util.default_root import DEFAULT_ROOT_PATH
+from maize.util.ints import uint16
+from maize.wallet.transaction_record import TransactionRecord
 
 
 def transaction_submitted_msg(tx: TransactionRecord) -> str:
@@ -17,7 +17,7 @@ def transaction_submitted_msg(tx: TransactionRecord) -> str:
 
 
 def transaction_status_msg(fingerprint: int, tx_id: bytes32) -> str:
-    return f"Run 'chia wallet get_transaction -f {fingerprint} -tx 0x{tx_id}' to get status"
+    return f"Run 'maize wallet get_transaction -f {fingerprint} -tx 0x{tx_id}' to get status"
 
 
 async def execute_with_wallet(
@@ -45,7 +45,7 @@ async def execute_with_wallet(
         if isinstance(e, aiohttp.ClientConnectorError):
             print(
                 f"Connection error. Check if the wallet is running at {wallet_rpc_port}. "
-                "You can run the wallet via:\n\tchia start wallet"
+                "You can run the wallet via:\n\tmaize start wallet"
             )
         else:
             print(f"Exception from 'wallet' {e}")
@@ -61,7 +61,7 @@ async def get_wallet(
     else:
         fingerprints = await wallet_client.get_public_keys()
     if len(fingerprints) == 0:
-        print("No keys loaded. Run 'chia keys generate' or import a key")
+        print("No keys loaded. Run 'maize keys generate' or import a key")
         return None
     if len(fingerprints) == 1:
         fingerprint = fingerprints[0]

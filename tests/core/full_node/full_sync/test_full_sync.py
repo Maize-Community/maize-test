@@ -6,16 +6,16 @@ from typing import List
 
 import pytest
 
-from chia.full_node.weight_proof import _validate_sub_epoch_summaries
-from chia.protocols import full_node_protocol
-from chia.types.blockchain_format.sub_epoch_summary import SubEpochSummary
-from chia.types.full_block import FullBlock
-from chia.types.peer_info import PeerInfo
-from chia.util.hash import std_hash
-from chia.util.ints import uint16
+from maize.full_node.weight_proof import _validate_sub_epoch_summaries
+from maize.protocols import full_node_protocol
+from maize.types.blockchain_format.sub_epoch_summary import SubEpochSummary
+from maize.types.full_block import FullBlock
+from maize.types.peer_info import PeerInfo
+from maize.util.hash import std_hash
+from maize.util.ints import uint16
 from tests.core.node_height import node_height_exactly, node_height_between
 from tests.setup_nodes import test_constants
-from chia.simulator.time_out_assert import time_out_assert
+from maize.simulator.time_out_assert import time_out_assert
 
 log = logging.getLogger(__name__)
 

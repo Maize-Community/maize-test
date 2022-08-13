@@ -44,7 +44,7 @@ async function main(opts) {
     console.log('Finished');
 }
 
-const appName = 'Chia';
+const appName = 'Maize';
 const dmgIcon = '../maize-blockchain-gui/packages/gui/src/assets/img/maize.icns';
 const dmgBackground = './assets/dmg/background.tiff';
 const outputDir = './final_installer';

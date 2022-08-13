@@ -1,13 +1,13 @@
 import React, { useMemo, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Trans, t } from '@lingui/macro';
-import { NFTInfo } from '@chia/api';
-import type { Wallet } from '@chia/api';
+import { NFTInfo } from '@maize/api';
+import type { Wallet } from '@maize/api';
 import {
   useGetDIDsQuery,
   useGetNFTWallets,
   useSetNFTDIDMutation,
-} from '@chia/api-react';
+} from '@maize/api-react';
 import {
   AlertDialog,
   Button,
@@ -20,11 +20,11 @@ import {
   Flex,
   Form,
   TooltipIcon,
-  chiaToMojo,
+  maizeToMojo,
   truncateValue,
   useOpenDialog,
   useShowError,
-} from '@chia/core';
+} from '@maize/core';
 import { PermIdentity as PermIdentityIcon } from '@mui/icons-material';
 import {
   Box,
@@ -278,7 +278,7 @@ export function NFTMoveToProfileAction(props: NFTMoveToProfileActionProps) {
 
   async function handleSubmit(formData: NFTMoveToProfileFormData) {
     const { destination, fee } = formData;
-    const feeInMojos = chiaToMojo(fee || 0);
+    const feeInMojos = maizeToMojo(fee || 0);
     let isValid = true;
 
     if (!destination || destination === currentDIDId) {

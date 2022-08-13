@@ -7,17 +7,17 @@ from typing import Any, List, Optional, Tuple
 
 from blspy import AugSchemeMPL, G1Element, PrivateKey
 
-from chia.types.blockchain_format.coin import Coin
-from chia.types.blockchain_format.program import Program
-from chia.types.blockchain_format.sized_bytes import bytes32
-from chia.types.coin_spend import CoinSpend
-from chia.types.spend_bundle import SpendBundle
-from chia.util.byte_types import hexstr_to_bytes
-from chia.util.ints import uint8, uint32, uint64, uint128
-from chia.util.streamable import Streamable, streamable
-from chia.wallet.derivation_record import DerivationRecord
-from chia.wallet.derive_keys import master_sk_to_wallet_sk
-from chia.wallet.rl_wallet.rl_wallet_puzzles import (
+from maize.types.blockchain_format.coin import Coin
+from maize.types.blockchain_format.program import Program
+from maize.types.blockchain_format.sized_bytes import bytes32
+from maize.types.coin_spend import CoinSpend
+from maize.types.spend_bundle import SpendBundle
+from maize.util.byte_types import hexstr_to_bytes
+from maize.util.ints import uint8, uint32, uint64, uint128
+from maize.util.streamable import Streamable, streamable
+from maize.wallet.derivation_record import DerivationRecord
+from maize.wallet.derive_keys import master_sk_to_wallet_sk
+from maize.wallet.rl_wallet.rl_wallet_puzzles import (
     make_clawback_solution,
     rl_make_aggregation_puzzle,
     rl_make_aggregation_solution,
@@ -25,13 +25,13 @@ from chia.wallet.rl_wallet.rl_wallet_puzzles import (
     rl_puzzle_for_pk,
     solution_for_rl,
 )
-from chia.wallet.transaction_record import TransactionRecord
-from chia.wallet.util.transaction_type import TransactionType
-from chia.wallet.util.wallet_types import WalletType
-from chia.wallet.util.compute_memos import compute_memos
-from chia.wallet.wallet import Wallet
-from chia.wallet.wallet_coin_record import WalletCoinRecord
-from chia.wallet.wallet_info import WalletInfo
+from maize.wallet.transaction_record import TransactionRecord
+from maize.wallet.util.transaction_type import TransactionType
+from maize.wallet.util.wallet_types import WalletType
+from maize.wallet.util.compute_memos import compute_memos
+from maize.wallet.wallet import Wallet
+from maize.wallet.wallet_coin_record import WalletCoinRecord
+from maize.wallet.wallet_info import WalletInfo
 
 
 @streamable

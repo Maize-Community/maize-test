@@ -8,10 +8,10 @@ import {
   Card,
   FormatBytes,
   FormatConnectionStatus,
-} from '@chia/core';
-import { useGetFarmerFullNodeConnectionsQuery, useIsServiceRunningQuery } from '@chia/api-react';
-import type { Connection } from '@chia/api';
-import { ServiceName } from '@chia/api';
+} from '@maize/core';
+import { useGetFarmerFullNodeConnectionsQuery, useIsServiceRunningQuery } from '@maize/api-react';
+import type { Connection } from '@maize/api';
+import { ServiceName } from '@maize/api';
 import FarmCloseConnection from './FarmCloseConnection';
 
 const StyledIconButton = styled(IconButton)`
@@ -96,7 +96,7 @@ export default function FarmFullNodeConnections() {
           {'The full node that your farmer is connected to is below. '}
           <Link
             target="_blank"
-            href="https://github.com/Chia-Network/chia-blockchain/wiki/Network-Architecture"
+            href="https://github.com/Maize-Network/maize-blockchain/wiki/Network-Architecture"
           >
             Learn more
           </Link>

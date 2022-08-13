@@ -6,20 +6,20 @@ from enum import Enum
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Tuple, Union
 
-from chia.consensus.coinbase import create_puzzlehash_for_pk
-from chia.util.bech32m import encode_puzzle_hash
-from chia.util.config import load_config
-from chia.util.default_root import DEFAULT_ROOT_PATH
-from chia.util.errors import KeychainException
-from chia.util.ints import uint32
-from chia.util.keychain import (
+from maize.consensus.coinbase import create_puzzlehash_for_pk
+from maize.util.bech32m import encode_puzzle_hash
+from maize.util.config import load_config
+from maize.util.default_root import DEFAULT_ROOT_PATH
+from maize.util.errors import KeychainException
+from maize.util.ints import uint32
+from maize.util.keychain import (
     Keychain,
     bytes_to_mnemonic,
     generate_mnemonic,
     mnemonic_to_seed,
     unlocks_keyring,
 )
-from chia.wallet.derive_keys import (
+from maize.wallet.derive_keys import (
     master_sk_to_farmer_sk,
     master_sk_to_pool_sk,
     master_sk_to_wallet_sk,
@@ -35,7 +35,7 @@ def generate_and_print():
     mnemonic = generate_mnemonic()
     print("Generating private key. Mnemonic (24 secret words):")
     print(mnemonic)
-    print("Note that this key has not been added to the keychain. Run chia keys add")
+    print("Note that this key has not been added to the keychain. Run maize keys add")
     return mnemonic
 
 
@@ -132,7 +132,7 @@ def derive_sk_from_hd_path(master_sk: PrivateKey, hd_path_root: str) -> Tuple[Pr
     and returns the derived key and the HD path that was used to derive it.
     """
 
-    from chia.wallet.derive_keys import _derive_path, _derive_path_unhardened
+    from maize.wallet.derive_keys import _derive_path, _derive_path_unhardened
 
     class DerivationType(Enum):
         NONOBSERVER = 0
@@ -190,12 +190,12 @@ def verify(message: str, public_key: str, signature: str):
 
 
 def migrate_keys(forced: bool = False):
-    from chia.util.keyring_wrapper import KeyringWrapper
-    from chia.util.misc import prompt_yes_no
+    from maize.util.keyring_wrapper import KeyringWrapper
+    from maize.util.misc import prompt_yes_no
 
     deprecation_message = (
         "\nLegacy keyring support is deprecated and will be removed in version 1.5.2. "
-        "You need to migrate your keyring to continue using Chia."
+        "You need to migrate your keyring to continue using Maize."
     )
 
     # Check if the keyring needs a full migration (i.e. if it's using the old keyring)
@@ -212,7 +212,7 @@ def migrate_keys(forced: bool = False):
 
             print()
             if not prompt_yes_no("Migrate these keys?"):
-                sys.exit("Migration aborted, can't run any chia commands.")
+                sys.exit("Migration aborted, can't run any maize commands.")
 
             keychain = Keychain()
             for sk, seed_bytes in keys_to_migrate:
@@ -265,7 +265,7 @@ def _search_derived(
     the provided search terms.
     """
 
-    from chia.wallet.derive_keys import _derive_path, _derive_path_unhardened
+    from maize.wallet.derive_keys import _derive_path, _derive_path_unhardened
 
     class DerivedSearchResultType(Enum):
         PUBLIC_KEY = "public key"
@@ -566,7 +566,7 @@ def derive_child_key(
     Derive child keys from the provided master key.
     """
 
-    from chia.wallet.derive_keys import _derive_path, _derive_path_unhardened
+    from maize.wallet.derive_keys import _derive_path, _derive_path_unhardened
 
     derivation_root_sk: Optional[PrivateKey] = None
     hd_path_root: Optional[str] = None

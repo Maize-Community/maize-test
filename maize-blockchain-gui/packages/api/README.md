@@ -1,10 +1,10 @@
-# @chia/api
+# @maize/api
 
-![Alt text](https://www.chia.net/img/chia_logo.svg)
+![Alt text](https://www.maize.farm/img/maize_logo.svg)
 
-This library provides support for TypeScript/JavaScript [Chia](https://www.chia.net) apps to access the [Chia Blockchain RPC](https://github.com/Chia-Network/chia-blockchain/wiki/RPC-Interfaces), by making it easier to perform the following actions:
+This library provides support for TypeScript/JavaScript [Maize](https://www.maize.farm) apps to access the [Maize Blockchain RPC](https://github.com/Maize-Network/maize-blockchain/wiki/RPC-Interfaces), by making it easier to perform the following actions:
 
-- Making requests to the Chia Blockchain RPC.
+- Making requests to the Maize Blockchain RPC.
 - Catch responses and errors with standard try/catch and async/await syntax.
 - Catch error when the request has a timeout. Each request has a default timeout of 10 minutes.
 - Auto-connect to daemon when you send the first request.
@@ -15,7 +15,7 @@ This library provides support for TypeScript/JavaScript [Chia](https://www.chia.
 ## Example
 
 ```ts
-import Client, { Wallet } from '@chia/api';
+import Client, { Wallet } from '@maize/api';
 import Websocket from 'ws';
 import sleep from 'sleep-promise';
 

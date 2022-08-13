@@ -1,9 +1,9 @@
 from typing import List, Optional
 
-from chia.util.db_wrapper import DBWrapper2
-from chia.util.ints import uint32
-from chia.wallet.util.wallet_types import WalletType
-from chia.wallet.wallet_action import WalletAction
+from maize.util.db_wrapper import DBWrapper2
+from maize.util.ints import uint32
+from maize.wallet.util.wallet_types import WalletType
+from maize.wallet.wallet_action import WalletAction
 
 
 class WalletActionStore:

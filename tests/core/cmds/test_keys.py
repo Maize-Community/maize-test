@@ -3,12 +3,12 @@ import pytest
 import re
 
 from blspy import PrivateKey
-from chia.cmds.chia import cli
-from chia.cmds.keys import delete_all_cmd, generate_and_print_cmd, show_cmd, sign_cmd, verify_cmd
-from chia.util.config import load_config
-from chia.util.file_keyring import FileKeyring
-from chia.util.keychain import DEFAULT_USER, DEFAULT_SERVICE, Keychain, generate_mnemonic
-from chia.util.keyring_wrapper import DEFAULT_KEYS_ROOT_PATH, KeyringWrapper, LegacyKeyring
+from maize.cmds.maize import cli
+from maize.cmds.keys import delete_all_cmd, generate_and_print_cmd, show_cmd, sign_cmd, verify_cmd
+from maize.util.config import load_config
+from maize.util.file_keyring import FileKeyring
+from maize.util.keychain import DEFAULT_USER, DEFAULT_SERVICE, Keychain, generate_mnemonic
+from maize.util.keyring_wrapper import DEFAULT_KEYS_ROOT_PATH, KeyringWrapper, LegacyKeyring
 from click.testing import CliRunner, Result
 from keyring.backend import KeyringBackend
 from pathlib import Path
@@ -66,7 +66,7 @@ class DummyLegacyKeyring(KeyringBackend):
 
 @pytest.fixture(scope="function")
 def empty_keyring():
-    with TempKeyring(user="user-chia-1.8", service="chia-user-chia-1.8") as keychain:
+    with TempKeyring(user="user-maize-1.8", service="maize-user-maize-1.8") as keychain:
         yield keychain
         KeyringWrapper.cleanup_shared_instance()
 
@@ -228,7 +228,7 @@ class TestKeysCommands:
 
     def test_show(self, keyring_with_one_key):
         """
-        Test that the `chia keys show` command shows the correct key.
+        Test that the `maize keys show` command shows the correct key.
         """
 
         keychain = keyring_with_one_key
@@ -243,7 +243,7 @@ class TestKeysCommands:
 
     def test_show_mnemonic(self, keyring_with_one_key):
         """
-        Test that the `chia keys show --show-mnemonic-seed` command shows the key's mnemonic seed.
+        Test that the `maize keys show --show-mnemonic-seed` command shows the key's mnemonic seed.
         """
 
         keychain = keyring_with_one_key
@@ -404,7 +404,7 @@ class TestKeysCommands:
 
     def test_generate_and_print(self):
         """
-        Test the `chia keys generate_and_print` command.
+        Test the `maize keys generate_and_print` command.
         """
 
         runner = CliRunner()
@@ -415,7 +415,7 @@ class TestKeysCommands:
 
     def test_sign(self, keyring_with_one_key):
         """
-        Test the `chia keys sign` command.
+        Test the `maize keys sign` command.
         """
 
         message: str = "hello world"
@@ -448,7 +448,7 @@ class TestKeysCommands:
 
     def test_sign_non_observer(self, keyring_with_one_key):
         """
-        Test the `chia keys sign` command with a non-observer key.
+        Test the `maize keys sign` command with a non-observer key.
         """
 
         message: str = "hello world"
@@ -520,7 +520,7 @@ class TestKeysCommands:
 
     def test_verify(self):
         """
-        Test the `chia keys verify` command.
+        Test the `maize keys verify` command.
         """
 
         message: str = "hello world"
@@ -541,7 +541,7 @@ class TestKeysCommands:
 
     def test_derive_search(self, tmp_path, keyring_with_one_key):
         """
-        Test the `chia keys derive search` command, searching a public and private key
+        Test the `maize keys derive search` command, searching a public and private key
         """
 
         keychain = keyring_with_one_key
@@ -600,7 +600,7 @@ class TestKeysCommands:
 
     def test_derive_search_wallet_address(self, tmp_path, keyring_with_one_key):
         """
-        Test the `chia keys derive search` command, searching for a wallet address
+        Test the `maize keys derive search` command, searching for a wallet address
         """
 
         keychain = keyring_with_one_key
@@ -649,7 +649,7 @@ class TestKeysCommands:
 
     def test_derive_search_wallet_testnet_address(self, tmp_path, keyring_with_one_key):
         """
-        Test the `chia keys derive search` command, searching for a testnet wallet address
+        Test the `maize keys derive search` command, searching for a testnet wallet address
         """
 
         keychain = keyring_with_one_key
@@ -700,7 +700,7 @@ class TestKeysCommands:
 
     def test_derive_search_failure(self, tmp_path, keyring_with_one_key):
         """
-        Test the `chia keys derive search` command with a failing search.
+        Test the `maize keys derive search` command with a failing search.
         """
 
         keychain = keyring_with_one_key
@@ -739,7 +739,7 @@ class TestKeysCommands:
 
     def test_derive_search_hd_path(self, tmp_path, empty_keyring, mnemonic_seed_file):
         """
-        Test the `chia keys derive search` command, searching under a provided HD path.
+        Test the `maize keys derive search` command, searching under a provided HD path.
         """
 
         keychain = empty_keyring
@@ -790,7 +790,7 @@ class TestKeysCommands:
 
     def test_derive_wallet_address(self, tmp_path, keyring_with_one_key):
         """
-        Test the `chia keys derive wallet-address` command, generating a couple of wallet addresses.
+        Test the `maize keys derive wallet-address` command, generating a couple of wallet addresses.
         """
 
         keychain = keyring_with_one_key
@@ -849,7 +849,7 @@ class TestKeysCommands:
 
     def test_derive_wallet_testnet_address(self, tmp_path, keyring_with_one_key):
         """
-        Test the `chia keys derive wallet-address` command, generating a couple of testnet wallet addresses.
+        Test the `maize keys derive wallet-address` command, generating a couple of testnet wallet addresses.
         """
 
         keychain = keyring_with_one_key
@@ -910,7 +910,7 @@ class TestKeysCommands:
 
     def test_derive_child_keys(self, tmp_path, keyring_with_one_key):
         """
-        Test the `chia keys derive child-keys` command, generating a couple of derived keys.
+        Test the `maize keys derive child-keys` command, generating a couple of derived keys.
         """
 
         keychain = keyring_with_one_key
@@ -989,7 +989,7 @@ class TestKeysCommands:
 
     def test_migration_not_needed(self, tmp_path, setup_keyringwrapper, monkeypatch):
         """
-        Test the `chia keys migrate` command when no migration is necessary
+        Test the `maize keys migrate` command when no migration is necessary
         """
 
         def mock_keychain_needs_migration() -> bool:
@@ -1018,7 +1018,7 @@ class TestKeysCommands:
 
     def test_migration_full(self, tmp_path, setup_legacy_keyringwrapper):
         """
-        Test the `chia keys migrate` command when a full migration is needed
+        Test the `maize keys migrate` command when a full migration is needed
         """
 
         legacy_keyring = KeyringWrapper.get_shared_instance().legacy_keyring
@@ -1063,7 +1063,7 @@ class TestKeysCommands:
             nonlocal legacy_keyring
             return legacy_keyring
 
-        from chia.util import keyring_wrapper
+        from maize.util import keyring_wrapper
 
         monkeypatch.setattr(keyring_wrapper, "get_legacy_keyring_instance", mock_get_legacy_keyring_instance)
 

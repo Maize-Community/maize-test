@@ -1,9 +1,9 @@
 import React, { ReactElement } from 'react';
 import { Trans } from '@lingui/macro';
-import { useGetWalletBalanceQuery, useGetCurrentDerivationIndexQuery } from '@chia/api-react';
+import { useGetWalletBalanceQuery, useGetCurrentDerivationIndexQuery } from '@maize/api-react';
 import styled from 'styled-components';
 import WalletGraph from '../WalletGraph';
-import { CardSimple, Flex, TooltipIcon } from '@chia/core';
+import { CardSimple, Flex, TooltipIcon } from '@maize/core';
 import useWallet from '../../hooks/useWallet';
 import useWalletHumanValue from '../../hooks/useWalletHumanValue';
 import { Typography } from '@mui/material';

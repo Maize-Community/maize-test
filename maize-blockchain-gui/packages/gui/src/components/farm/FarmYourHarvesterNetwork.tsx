@@ -8,10 +8,10 @@ import {
   FormatBytes,
   FormatConnectionStatus,
   Card,
-} from '@chia/core';
-import { useIsServiceRunningQuery, useGetHarvesterConnectionsQuery } from '@chia/api-react';
-import type { Connection } from '@chia/api';
-import { ServiceName } from '@chia/api';
+} from '@maize/core';
+import { useIsServiceRunningQuery, useGetHarvesterConnectionsQuery } from '@maize/api-react';
+import type { Connection } from '@maize/api';
+import { ServiceName } from '@maize/api';
 import FarmCloseConnection from './FarmCloseConnection';
 
 const StyledIconButton = styled(IconButton)`

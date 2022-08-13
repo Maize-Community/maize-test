@@ -7,7 +7,7 @@ import {
   DialogTitle,
   DialogContent,
 } from '@mui/material';
-import { AlertDialog, ButtonLoading, DialogActions, Flex, Form, TextField, useOpenDialog } from '@chia/core';
+import { AlertDialog, ButtonLoading, DialogActions, Flex, Form, TextField, useOpenDialog } from '@maize/core';
 
 type WalletRenameDialogFormData = {
   name: string;

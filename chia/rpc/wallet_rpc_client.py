@@ -1,16 +1,16 @@
 from typing import Dict, List, Optional, Any, Tuple, Union
 
-from chia.pools.pool_wallet_info import PoolWalletInfo
-from chia.rpc.rpc_client import RpcClient
-from chia.types.announcement import Announcement
-from chia.types.blockchain_format.coin import Coin
-from chia.types.blockchain_format.sized_bytes import bytes32
-from chia.util.ints import uint32, uint64
-from chia.wallet.trade_record import TradeRecord
-from chia.wallet.trading.offer import Offer
-from chia.wallet.transaction_record import TransactionRecord
-from chia.wallet.transaction_sorting import SortKey
-from chia.wallet.util.wallet_types import WalletType
+from maize.pools.pool_wallet_info import PoolWalletInfo
+from maize.rpc.rpc_client import RpcClient
+from maize.types.announcement import Announcement
+from maize.types.blockchain_format.coin import Coin
+from maize.types.blockchain_format.sized_bytes import bytes32
+from maize.util.ints import uint32, uint64
+from maize.wallet.trade_record import TradeRecord
+from maize.wallet.trading.offer import Offer
+from maize.wallet.transaction_record import TransactionRecord
+from maize.wallet.transaction_sorting import SortKey
+from maize.wallet.util.wallet_types import WalletType
 
 
 def parse_result_transactions(result: Dict[str, Any]) -> Dict[str, Any]:
@@ -22,9 +22,9 @@ def parse_result_transactions(result: Dict[str, Any]) -> Dict[str, Any]:
 
 class WalletRpcClient(RpcClient):
     """
-    Client to Chia RPC, connects to a local wallet. Uses HTTP/JSON, and converts back from
+    Client to Maize RPC, connects to a local wallet. Uses HTTP/JSON, and converts back from
     JSON into native python objects before returning. All api calls use POST requests.
-    Note that this is not the same as the peer protocol, or wallet protocol (which run Chia's
+    Note that this is not the same as the peer protocol, or wallet protocol (which run Maize's
     protocol on top of TCP), it's a separate protocol on top of HTTP that provides easy access
     to the full node.
     """

@@ -1,8 +1,8 @@
-export const service_wallet = 'chia_wallet';
-export const service_full_node = 'chia_full_node';
-export const service_farmer = 'chia_farmer';
-export const service_harvester = 'chia_harvester';
-export const service_simulator = 'chia_full_node_simulator';
+export const service_wallet = 'maize_wallet';
+export const service_full_node = 'maize_full_node';
+export const service_farmer = 'maize_farmer';
+export const service_harvester = 'maize_harvester';
+export const service_simulator = 'maize_full_node_simulator';
 export const service_daemon = 'daemon';
 export const service_plotter = 'chia_plotter';
 

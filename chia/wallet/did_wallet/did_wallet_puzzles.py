@@ -1,12 +1,12 @@
-from chia.types.blockchain_format.sized_bytes import bytes32
-from chia.types.blockchain_format.program import Program
+from maize.types.blockchain_format.sized_bytes import bytes32
+from maize.types.blockchain_format.program import Program
 from typing import List, Optional, Tuple, Iterator, Dict
 from blspy import G1Element
-from chia.types.blockchain_format.coin import Coin
-from chia.types.coin_spend import CoinSpend
-from chia.util.ints import uint64
-from chia.wallet.puzzles.load_clvm import load_clvm
-from chia.types.condition_opcodes import ConditionOpcode
+from maize.types.blockchain_format.coin import Coin
+from maize.types.coin_spend import CoinSpend
+from maize.util.ints import uint64
+from maize.wallet.puzzles.load_clvm import load_clvm
+from maize.types.condition_opcodes import ConditionOpcode
 
 
 SINGLETON_TOP_LAYER_MOD = load_clvm("singleton_top_layer_v1_1.clvm")

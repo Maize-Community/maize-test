@@ -4,15 +4,15 @@ from typing import Any, Dict, List, Optional, Set, Tuple
 from blspy import G2Element
 from clvm_tools.binutils import disassemble
 
-from chia.types.blockchain_format.sized_bytes import bytes32
-from chia.types.blockchain_format.coin import Coin, coin_as_list
-from chia.types.blockchain_format.program import Program
-from chia.types.announcement import Announcement
-from chia.types.coin_spend import CoinSpend
-from chia.types.spend_bundle import SpendBundle
-from chia.util.bech32m import bech32_decode, bech32_encode, convertbits
-from chia.util.ints import uint64
-from chia.wallet.outer_puzzles import (
+from maize.types.blockchain_format.sized_bytes import bytes32
+from maize.types.blockchain_format.coin import Coin, coin_as_list
+from maize.types.blockchain_format.program import Program
+from maize.types.announcement import Announcement
+from maize.types.coin_spend import CoinSpend
+from maize.types.spend_bundle import SpendBundle
+from maize.util.bech32m import bech32_decode, bech32_encode, convertbits
+from maize.util.ints import uint64
+from maize.wallet.outer_puzzles import (
     construct_puzzle,
     create_asset_id,
     match_puzzle,
@@ -20,10 +20,10 @@ from chia.wallet.outer_puzzles import (
     get_inner_puzzle,
     get_inner_solution,
 )
-from chia.wallet.payment import Payment
-from chia.wallet.puzzle_drivers import PuzzleInfo, Solver
-from chia.wallet.puzzles.load_clvm import load_clvm
-from chia.wallet.util.puzzle_compression import (
+from maize.wallet.payment import Payment
+from maize.wallet.puzzle_drivers import PuzzleInfo, Solver
+from maize.wallet.puzzles.load_clvm import load_clvm
+from maize.wallet.util.puzzle_compression import (
     compress_object_with_puzzles,
     decompress_object_with_puzzles,
     lowest_best_version,

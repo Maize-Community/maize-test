@@ -12,8 +12,8 @@ import {
   dark,
   light,
   ErrorBoundary,
-} from '@chia/core';
-import { store, api } from '@chia/api-react';
+} from '@maize/core';
+import { store, api } from '@maize/api-react';
 import { Trans } from '@lingui/macro';
 import { i18n, defaultLocale, locales } from '../../config/locales';
 import AppState from './AppState';
