@@ -511,7 +511,7 @@ class CATWallet:
     async def get_lineage_proof_for_coin(self, coin) -> Optional[LineageProof]:
         return await self.lineage_store.get_lineage_proof(coin.parent_coin_info)
 
-    async def create_tandem_xch_tx(
+    async def create_tandem_xmz_tx(
         self,
         fee: uint64,
         amount_to_claim: uint64,
@@ -597,7 +597,7 @@ class CATWallet:
         selected_cat_amount = sum([c.amount for c in cat_coins])
         assert selected_cat_amount >= starting_amount
 
-        # Figure out if we need to absorb/melt some XCH as part of this
+        # Figure out if we need to absorb/melt some XMZ as part of this
         regular_chia_to_claim: int = 0
         if payment_amount > starting_amount:
             fee = uint64(fee + payment_amount - starting_amount)
@@ -633,7 +633,7 @@ class CATWallet:
                 announcement = Announcement(coin.name(), std_hash(b"".join([c.name() for c in cat_coins])))
                 if need_chia_transaction:
                     if fee > regular_chia_to_claim:
-                        chia_tx, _ = await self.create_tandem_xch_tx(
+                        chia_tx, _ = await self.create_tandem_xmz_tx(
                             fee,
                             uint64(regular_chia_to_claim),
                             announcement_to_assert=announcement,
@@ -646,7 +646,7 @@ class CATWallet:
                             puzzle_announcements_to_assert=puzzle_announcements_bytes,
                         )
                     elif regular_chia_to_claim > fee:
-                        chia_tx, _ = await self.create_tandem_xch_tx(
+                        chia_tx, _ = await self.create_tandem_xmz_tx(
                             fee, uint64(regular_chia_to_claim), min_coin_amount=min_coin_amount
                         )
                         innersol = self.standard_wallet.make_solution(
