@@ -597,7 +597,7 @@ if (!handleSquirrelEvent()) {
           {
             label: i18n._(/* i18n */ { id: 'Real-time DB' }),
             click: () => {
-              openExternal('https://maizeforksblockchain.com');
+              openExternal('https://chiaforksblockchain.com');
             },
           },
           {
