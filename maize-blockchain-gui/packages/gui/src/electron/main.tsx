@@ -543,7 +543,7 @@ if (!handleSquirrelEvent()) {
             label: i18n._(/* i18n */ { id: 'Maize Blockchain Wiki' }),
             click: () => {
               openExternal(
-                'https://github.com/Maize Network/maize-blockchain/wiki',
+                'https://github.com/Maize-Network/maize-blockchain/wiki',
               );
             },
           },
@@ -551,7 +551,7 @@ if (!handleSquirrelEvent()) {
             label: i18n._(/* i18n */ { id: 'Frequently Asked Questions' }),
             click: () => {
               openExternal(
-                'https://github.com/Maize Network/maize-blockchain/wiki/FAQ',
+                'https://github.com/Maize-Network/maize-blockchain/wiki/FAQ',
               );
             },
           },
@@ -559,7 +559,7 @@ if (!handleSquirrelEvent()) {
             label: i18n._(/* i18n */ { id: 'Release Notes' }),
             click: () => {
               openExternal(
-                'https://github.com/Maize Network/maize-blockchain/releases',
+                'https://github.com/Maize-Network/maize-blockchain/releases',
               );
             },
           },
@@ -578,7 +578,7 @@ if (!handleSquirrelEvent()) {
             label: i18n._(/* i18n */ { id: 'Report an Issue...' }),
             click: () => {
               openExternal(
-                'https://github.com/Maize Network/maize-blockchain/issues',
+                'https://github.com/Maize-Network/maize-blockchain/issues',
               );
             },
           },
