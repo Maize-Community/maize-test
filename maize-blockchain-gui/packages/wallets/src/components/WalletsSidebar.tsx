@@ -104,7 +104,7 @@ export default function WalletsSidebar() {
     );
 
   function handleOpenBlogPost() {
-    openExternal('https://www.maize.farm/cat2blog');
+    openExternal('https://www.maize.net/cat2blog');
   }
 
   function openTokensInfoDialog() {
@@ -134,7 +134,7 @@ export default function WalletsSidebar() {
                 size="large"
                 onClick={() =>
                   openExternal(
-                    'https://cat1.maize.farm/#publicKey=' +
+                    'https://cat1.maize.net/#publicKey=' +
                       privateKey.pk +
                       '&fingerprint=' +
                       fingerprint
@@ -156,7 +156,7 @@ export default function WalletsSidebar() {
           <p>
             <Trans>Want to see your old balance for yourself?</Trans>
           </p>
-          <Link target="_blank" href="https://www.maize.farm/download/">
+          <Link target="_blank" href="https://www.maize.net/download/">
             <Trans>Click here to download an older version of the wallet</Trans>
           </Link>
         </ContentStyled>
